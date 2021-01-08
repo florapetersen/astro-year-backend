@@ -1,3 +1,31 @@
+/*
+t.string :name 
+
+User
+    has_many :products
+*/
+
+/*
+t.string :name
+t.text :description
+t.string :link
+t.references :category
+t.references :user 
+
+Product
+    belongs_to :category
+    belongs_to :user 
+
+*/
+
+/*
+t.string :name 
+
+Category
+    has_many :products
+*/
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the
