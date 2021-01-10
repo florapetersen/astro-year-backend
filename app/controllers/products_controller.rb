@@ -5,7 +5,10 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
 
-    render json: @products
+    render json: ProductSerializer.new(@products).serializable_hash[:data].map{ |hash| hash[:attributes] }
+    #now we have an object with a data property
+    #pointing to an array of objects. each one of the objects has id, type, and attributes. 
+    #the stuff we really want is inside of attributes.
   end
 
   # GET /products/1
