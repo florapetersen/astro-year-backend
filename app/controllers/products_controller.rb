@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
+    @products = current_user.products
 
     render json: ProductSerializer.new(@products).serializable_hash[:data].map{ |hash| hash[:attributes] }
     #now we have an object with a data property
@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.build(product_params)
 
     if @product.save
       render json: @product, status: :created, location: @product
