@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
     if @product.save
       render json: @product, status: :created, location: @product
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render json: @product.errors.full_messages.to_sentence, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +49,6 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name, :description, :link, :user_id, :category_id)
+      params.require(:product).permit(:name, :description, :link, :image_src, :user_id, :category_id)
     end
 end
