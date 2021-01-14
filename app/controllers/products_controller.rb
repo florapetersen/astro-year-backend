@@ -13,7 +13,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
-    render json: @product
+    render json: {
+      id: params[:id],
+      productAttributes: ProductSerializer.new(@product).serializable_hash
+    }
   end
 
   # POST /products
