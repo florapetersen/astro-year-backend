@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = current_user.products
+    @products = current_user&.products 
 
     render json: ProductSerializer.new(@products).serializable_hash[:data].map{ |hash| hash[:attributes] }
   end
