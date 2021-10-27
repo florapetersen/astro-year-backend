@@ -24,6 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def update
   #   super
   # end
+  # test for heroku
 
   # DELETE /resource
   # def destroy
