@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
     @products = current_user&.products 
 
-    render json: ProductSerializer.new(@products).serializable_hash[:data].map{ |hash| hash[:attributes] }
+    render json: ProductSerializer&.new(@products).serializable_hash[:data].map{ |hash| hash[:attributes] }
   end
 
   # GET /products/1
